@@ -13,6 +13,7 @@ from models.user import User
 from models import storage
 import shlex
 import cmd
+import ast
 import re
 
 
@@ -217,6 +218,20 @@ class HBNBCommand(cmd.Cmd):
                 self.do_destroy(arg[0] + " " + _id)
 
             elif re.search("^update(.*$)", arg[1]):
+
+                # With a dictionary.
+                args = arg[1].split("(")
+                args = args[1].split(", ", 1)
+                _id = args[0].replace('"', "")
+                _dict = ast.literal_eval(args[1].replace(")", ""))
+
+                if type(_dict) == dict:
+                    for key, value in _dict.items():
+                        _update = arg[0] + " " + _id + " "
+                        self.do_update(_update + key + " " + str(value))
+                    return
+
+                # With arguments.
                 args = re.split(", |\(", arg[1])
                 _id = args[1].replace('"', "")
                 _name = args[2].replace('"', "")
