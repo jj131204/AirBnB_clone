@@ -31,10 +31,6 @@ class HBNBCommand(cmd.Cmd):
         """ Exits the program. """
         return True
 
-    def help_quit(self):
-        """ Print a short explanation of the function ``quit``. """
-        print("Quit command to exit the program.\n")
-
     def emptyline(self):
         """ Skip execution when an empty line is received. """
         pass
@@ -42,13 +38,6 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """ Exits the program. """
         return True
-
-    def help_EOF(self):
-        """ Print a short explanation of the function ``quit``. """
-        print("Quit command to exit the program.\n")
-
-    # do_EOF = do_quit
-    # help_EOF = help_quit
 
     def do_create(self, arg):
         """
@@ -67,11 +56,6 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             print("** class doesn't exist **")
-
-    def help_create(self):
-        """ Print a short explanation of the function ``create``. """
-        print("Creates a new instance, saves it (to the JSON file)"
-              "and prints the ``id``.\n")
 
     def do_show(self, arg):
         """
@@ -101,11 +85,6 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             print("** class doesn't exist **")
-
-    def help_show(self):
-        """ Print a short explanation of the function ``show``. """
-        print("Prints the string representation of an instance"
-              "based on the class name and ``id``.\n")
 
     def do_destroy(self, arg):
         """
@@ -138,11 +117,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def help_destroy(self):
-        """ Print a short explanation of the function ``destroy``. """
-        print("Deletes an instance based on the class name and ``id``"
-              "(save the change into the JSON file).\n")
-
     def do_all(self, arg):
         """
             Prints all string representation of all instances
@@ -165,11 +139,6 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             print("** class doesn't exist **")
-
-    def help_all(self):
-        """ Print a short explanation of the function ``all``. """
-        print("Prints all string representation of all instances"
-              "based or not on the class name.\n")
 
     def do_update(self, arg):
         """
@@ -212,15 +181,6 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             print("** class doesn't exist **")
-
-    def help_update(self):
-        """ Print a short explanation of the function ``update``. """
-        str1 = "Updates an instance based on the class ``name`` and ``id`` "
-        str2 = "by adding or updating attribute"
-        str3 = "(save the change into the JSON file).\n"
-        usage = "Usage: update <class name> <id> <attribute name>"
-        attribute = "'<attribute value>'.\n"
-        print(str1 + str2 + str3 + usage + attribute)
 
 
 if __name__ == '__main__':
