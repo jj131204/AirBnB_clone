@@ -39,8 +39,16 @@ class HBNBCommand(cmd.Cmd):
         """ Skip execution when an empty line is received. """
         pass
 
-    do_EOF = do_quit
-    help_EOF = help_quit
+    def do_EOF(self, arg):
+        """ Exits the program. """
+        return True
+
+    def help_EOF(self):
+        """ Print a short explanation of the function ``quit``. """
+        print("Quit command to exit the program.\n")
+
+    # do_EOF = do_quit
+    # help_EOF = help_quit
 
     def do_create(self, arg):
         """
