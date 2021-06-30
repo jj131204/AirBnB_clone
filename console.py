@@ -13,6 +13,7 @@ from models.user import User
 from models import storage
 import shlex
 import cmd
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -20,10 +21,8 @@ class HBNBCommand(cmd.Cmd):
         class for the command interpreter.
     """
 
-    __classes = ["BaseModel", "User",
-                 "State", "City",
-                 "Place", "Amenity",
-                 "Review"]
+    __classes = ["BaseModel", "User", "State", "City",
+                 "Place", "Amenity", "Review"]
 
     prompt = "(hbnb) "
 
@@ -197,17 +196,33 @@ class HBNBCommand(cmd.Cmd):
         - Receive undefined values as methods
           to perform a corresponding execution.
         """
-        arg = arg.split()
+        arg = arg.split(".")
 
-        for _class in self.__classes:
+        if arg[0] in self.__classes:
 
-            call = _class + ".all()"
-            if arg[0] == call:
-                self.do_all(_class)
+            if arg[1] == "all()":
+                self.do_all(arg[0])
 
-            call = _class + ".count()"
-            if arg[0] == call:
-                self.do_count(_class)
+            elif arg[1] == "count()":
+                self.do_count(arg[0])
+
+            elif re.search("^show(.*$)", arg[1]):
+                _id = str(arg[1]).split("(")
+                _id = _id[1].replace('"', "").replace(")", "")
+                self.do_show(arg[0] + " " + _id)
+
+            elif re.search("^destroy(.*$)", arg[1]):
+                _id = str(arg[1]).split("(")
+                _id = _id[1].replace('"', "").replace(")", "")
+                self.do_destroy(arg[0] + " " + _id)
+
+            elif re.search("^update(.*$)", arg[1]):
+                args = re.split(", |\(", arg[1])
+                _id = args[1].replace('"', "")
+                _name = args[2].replace('"', "")
+                _value = args[3].replace('"', "").replace(")", "")
+                _update = arg[0] + " " + _id + " " + _name + " " + _value
+                self.do_update(_update)
 
 
 if __name__ == '__main__':
