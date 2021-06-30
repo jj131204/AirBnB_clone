@@ -182,6 +182,33 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def do_count(self, arg):
+        """ Retrieve the number of instances of a class """
+        counter = 0
+
+        for key, value in storage.all().items():
+            if value.__class__.__name__ == arg:
+                counter += 1
+
+        print(counter)
+
+    def default(self, arg):
+        """
+        - Receive undefined values as methods
+          to perform a corresponding execution.
+        """
+        arg = arg.split()
+
+        for _class in self.__classes:
+
+            call = _class + ".all()"
+            if arg[0] == call:
+                self.do_all(_class)
+
+            call = _class + ".count()"
+            if arg[0] == call:
+                self.do_count(_class)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
