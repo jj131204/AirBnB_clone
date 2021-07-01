@@ -17,7 +17,7 @@
   - Destroy an object
 
 
-   ### Installation
+   ## Installation
    
    - If you want to run the command interpreter follow the next steps:
 
@@ -25,11 +25,16 @@
 
    - Access AirBnB_clone directory: cd  AirBnB_clone
         
-   ### Execution
-   #### Interactive mode
+   ## Execution
+   ### Interactive mode
+   
+   
    ![image](https://user-images.githubusercontent.com/77931977/124053608-2ddb8a00-d9e6-11eb-8a9c-03e9bcdac14c.png)
    
-   #### Not interactive mode
+   
+   ### Not interactive mode
+   
+  
    ![image](https://user-images.githubusercontent.com/77931977/124058505-1ce34680-d9ef-11eb-9973-2741e5e53523.png)
         
    
