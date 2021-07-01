@@ -63,3 +63,5 @@
   - Sergio Orejarena / [GitHub](https://github.com/SergioO21) - [Twitter](https://twitter.com/SergioOR21)
  
 >  Finished 30 / 06 / 2021
+
+####  [Copyright](https://github.com/SergioO21/AirBnB_clone/blob/main/LICENSE)
